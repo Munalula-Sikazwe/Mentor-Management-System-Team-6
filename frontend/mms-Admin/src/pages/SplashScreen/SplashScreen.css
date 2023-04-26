@@ -1,0 +1,40 @@
+.bg {
+  background-color: #058b94;
+}
+
+.logo {
+  width: 10vw;
+  height: auto;
+  margin: auto;
+}
+
+.logoText {
+  font-family: 'Mukta', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 53px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.wrap {
+  animation: blink-text 6s linear infinite;
+}
+
+@keyframes blink-text {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
