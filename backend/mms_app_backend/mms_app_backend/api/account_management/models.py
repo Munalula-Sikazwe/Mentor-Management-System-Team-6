@@ -128,7 +128,7 @@ class About(AbstractBaseModel):
     program_id = Column(Integer, ForeignKey("programs.id"))
     documents = relationship("Document", back_populates='about')
     roles = relationship("Role", back_populates='abouts', secondary='about_role_associations')
-    proficiencies = relationship("Proficiency", back_populates='abouts')
+    proficiencies = relationship("Proficiency", back_populates='abouts',secondary='about_proficiency_associations')
 
 
 class Document(AbstractBaseModel):
@@ -142,10 +142,11 @@ class Document(AbstractBaseModel):
 class Proficiency(AbstractBaseModel):
     __tablename__ = 'proficiencies'
     name = Column(String(256))
-    about = relationship("About", back_populates='proficiencies')
+    abouts = relationship("About", back_populates='proficiencies',secondary='about_proficiency_associations')
 
 
 class ProficiencyAboutAssociation(Base):
+    __tablename__ = 'about_proficiency_associations'
     about_id = Column(Integer, ForeignKey('abouts.id'), primary_key=True)
     proficiency_id = Column(Integer, ForeignKey('proficiencies.id'), primary_key=True)
 
